@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxvuxs0rt6dgx"]
+
+[ext_resource type="Texture2D" uid="uid://cmlt5c4ma3gsq" path="res://assets/kenney_platformerpack/PNG/Enemies/bee.png" id="1_fk41y"]
+[ext_resource type="PackedScene" uid="uid://bbstxnj2x7l4a" path="res://scenes/AreaTrigger.tscn" id="2_0xelh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m7a3t"]
+radius = 55.0
+height = 126.0
+
+[node name="FallingBee" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_fk41y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_m7a3t")
+
+[node name="AreaTrigger" parent="." instance=ExtResource("2_0xelh")]
+scale = Vector2(1.2, 1.88)
+sceneName = "LoseScreen"

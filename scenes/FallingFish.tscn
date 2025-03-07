@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci6vy0sgcfn25"]
+
+[ext_resource type="Script" path="res://scenes/falling_fish.gd" id="1_eb581"]
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="2_ntfol"]
+[ext_resource type="PackedScene" uid="uid://bbstxnj2x7l4a" path="res://scenes/AreaTrigger.tscn" id="3_yiudq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bspeg"]
+radius = 40.0
+height = 120.0
+
+[node name="FallingFish" type="RigidBody2D"]
+script = ExtResource("1_eb581")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_ntfol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bspeg")
+
+[node name="AreaTrigger" parent="." instance=ExtResource("3_yiudq")]
+scale = Vector2(0.918554, -1.68525)
+sceneName = "LoseScreen"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
